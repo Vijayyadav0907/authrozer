@@ -1,12 +1,8 @@
-import nodemailer from "nodemailer";
 import Config from "../Config/Config.js";
+import { createMailer } from "./mailer.js";
 
 export const sendOtpMail = async(email,otp) =>{
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth:
-         {user: Config.MAIL,
-        pass: Config.MAIL_PASSWORD}});
+    const transporter = createMailer();
     const mailOptions = {
         from: Config.MAIL,
         to: email,

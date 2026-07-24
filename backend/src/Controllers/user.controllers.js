@@ -12,7 +12,7 @@ export const register = async (req, res) => {
 
         const {username,email,password} = req.body;
 
-        if(!username || !email, !password){
+        if(!username || !email || !password){
             return res.status(400).json({message: "All fields are required"});
         }
 
@@ -31,11 +31,9 @@ export const register = async (req, res) => {
         })
 
         const token = jwt.sign({id:user._id}, Config.JWT_SECRET, {expiresIn: "1d"});
-       await VerifyMail(
-    token,
-    email,
-    username
-);
+        // Do not make registration wait for SMTP. Email failures are logged
+        // by VerifyMail while the user receives an immediate response.
+        void VerifyMail(token, email, username);
 
         res.status(201).json(
 

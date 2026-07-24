@@ -1,8 +1,8 @@
-import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
 import Config from "../Config/Config.js";
+import { createMailer } from "./mailer.js";
 
 console.log(Config.CLIENT_URL);
 
@@ -11,13 +11,7 @@ const __dirname = path.dirname(__filename);
 
 export const VerifyMail = async (token, email, username) => {
     try {
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: Config.MAIL,
-                pass: Config.MAIL_PASSWORD,
-            },
-        });
+        const transporter = createMailer();
 
         // Configure Handlebars
         transporter.use(
