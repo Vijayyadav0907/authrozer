@@ -69,16 +69,16 @@ const Signup = () => {
             
             
             
-        } catch (error) {
-            console.log(error);
-               toast.error(
-        error.response.data.errors[0].message || "Something went wrong"
+        }  catch (error) {
+    console.log(error.response?.data);
+
+    toast.error(
+        error.response?.data?.message || "Something went wrong"
     );
-            
-        }finally{
-            setIsLoading(false);
-            
-        }
+
+} finally {
+    setIsLoading(false);
+}
     };
 
 
