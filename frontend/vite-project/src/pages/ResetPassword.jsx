@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import { toast } from "sonner";
 import { LockKeyhole, Loader2, Eye, EyeOff } from "lucide-react";
 
@@ -56,7 +57,7 @@ const ResetPassword = () => {
 
 
       const res = await axios.post(
-        `http://localhost:300/api/user/reset-password/${email}`,
+        `${API_URL}/api/user/reset-password/${email}`,
         {
         newPassword: password,
     confirmPassword: confirmPassword

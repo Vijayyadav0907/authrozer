@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import { Loader2, CheckCircle, XCircle } from "lucide-react";
 
 const VerifyMail = () => {
@@ -24,7 +25,7 @@ const VerifyMail = () => {
 
       try {
         const { data } = await axios.post(
-          "http://localhost:300/api/user/verify-email",
+          `${API_URL}/api/user/verify-email`,
           {}, // No request body
           {
             headers: {

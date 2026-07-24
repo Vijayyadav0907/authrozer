@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_URL } from "@/lib/api";
 import { Link } from "react-router-dom";
 import { Mail, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -34,7 +35,7 @@ const ForgotPassword = () => {
       console.log(email);
 
       const response = await fetch(
-        "http://localhost:300/api/user/forgot-password",
+        `${API_URL}/api/user/forgot-password`,
         {
           method: "POST",
           headers: {

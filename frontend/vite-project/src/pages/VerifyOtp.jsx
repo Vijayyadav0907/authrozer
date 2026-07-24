@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import { toast } from "sonner";
 import { ShieldCheck, Loader2 } from "lucide-react";
 
@@ -41,7 +42,7 @@ const VerifyOtp = () => {
 
 
       const res = await axios.post(
-        `http://localhost:300/api/user/verify-otp/${email}`,
+        `${API_URL}/api/user/verify-otp/${email}`,
         {
           otp
         }

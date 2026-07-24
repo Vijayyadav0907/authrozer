@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios"
+import { API_URL } from "@/lib/api"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -48,7 +49,7 @@ const Signup = () => {
         console.log(formData);
         try {
             setIsLoading(true);
-           const data = await axios.post('http://localhost:300/api/user/register',formData , {
+           const data = await axios.post(`${API_URL}/api/user/register`,formData , {
             headers: {
               "Content-Type": "application/json",
             },

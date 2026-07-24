@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -43,7 +44,7 @@ const Login = () => {
       setIsLoading(true);
 
       const { data } = await axios.post(
-        "http://localhost:300/api/user/login",
+        `${API_URL}/api/user/login`,
         formData,
         {
           headers: {

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ShieldCheck, MailCheck, LockKeyhole, LogOut, Mail } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -45,7 +46,7 @@ const getUser = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "http://localhost:300/api/user/get-user",
+      `${API_URL}/api/user/get-user`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
