@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(CookieParser());
 app.use(cors({
-    origin: "http://localhost:400",
+    origin: ["http://localhost:400","https://authrozer.vercel.app"],
     credentials: true
 }));
 
